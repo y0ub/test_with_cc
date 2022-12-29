@@ -50,16 +50,11 @@ void fatal(int error_code, std::function<void()> func) {
 }
 
 int main() {
-  debug<0>([] {
-      debug_console << "Correct value is " << 65336 << '\n';
-      });
+  debug<0>([]{debug_console << "Correct value is " << 65336 << '\n';});
 
-  warning<0>([] {
-      debug_console << "Maybe correct value is " << 65536 << '\n';
-      });
+  warning<0>(
+      []{debug_console << "Maybe correct value is " << 65536 << '\n';});
 
-  fatal<0>([] {
   // fatal<0>(-1, [] {
-      debug_console << "Invalid value " << 65536 << '\n';
-      });
+  fatal<0>([]{debug_console << "Invalid value " << 65536 << '\n';});
 }
